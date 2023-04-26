@@ -8,8 +8,20 @@ st.title('CS:GO Skin Price Checker')
 APP_ID = '730'
 GAME_NAME = 'Counter-Strike: Global Offensive'
 
-# prompt user for weapon type and item name
-weapon_type = st.text_input("Enter weapon type (e.g. AK-47, M4A4): ")
+# list of available weapon types
+weapon_types = [
+    "AK-47",
+    "M4A4",
+    "AWP",
+    "Glock-18",
+    "USP-S",
+    "P2000",
+    "Desert Eagle",
+    # add more weapon types here
+]
+
+# create a dropdown for weapon type and prompt user for item name
+weapon_type = st.selectbox("Select weapon type:", weapon_types)
 item_name = st.text_input("Enter item name: ")
 
 if st.button("Get Prices"):
@@ -34,7 +46,7 @@ if st.button("Get Prices"):
                     price = data['lowest_price']
                     st.write(f'{item_name}: {price}')
                 else:
-                    st.write(f'No Steam Listings Found for {item_name}')
+                    st.write(f'No steam listings found for {item_name}')
             else:
                 st.write(f'Failed to retrieve price for {item_name}')
         else:
