@@ -9,6 +9,7 @@ st.title('CS:GO Skin Price Checker')
 APP_ID = '730'
 GAME_NAME = 'Counter-Strike: Global Offensive'
 
+# list of available weapon types
 weapon_types = [
        "AK-47",
     "M4A4",
@@ -61,8 +62,6 @@ weapon_types = [
     "Survival Knife",
     "Nomad Knife",
     "Skeleton Knife",
-
-    # add more weapon types here
 ]
 
 # create a dropdown for weapon type and prompt user for item name
@@ -76,7 +75,12 @@ if st.button("Get Prices"):
         f'{weapon_type} | {item_name} (Well-Worn)',
         f'{weapon_type} | {item_name} (Field-Tested)',
         f'{weapon_type} | {item_name} (Minimal Wear)',
-        f'{weapon_type} | {item_name} (Factory New)'
+        f'{weapon_type} | {item_name} (Factory New)',
+        f'StatTrak™ {weapon_type} | {item_name} (Battle-Scarred)',
+        f'StatTrak™ {weapon_type} | {item_name} (Well-Worn)',
+        f'StatTrak™ {weapon_type} | {item_name} (Field-Tested)',
+        f'StatTrak™ {weapon_type} | {item_name} (Minimal Wear)',
+        f'StatTrak™ {weapon_type} | {item_name} (Factory New)'
     ]
 
     # create an empty DataFrame for displaying the results
@@ -100,6 +104,5 @@ if st.button("Get Prices"):
         else:
             results_df = results_df.append({"Item Name": item_name, "Price": "Failed to connect to Steam Community Market"}, ignore_index=True)
 
-    # display the results as a table
-    st.table(results_df)
-
+    # display the results as a table without the index column
+    st.write(results_df.to_html(index=False, escape=False, classes=["table", "table-striped", "table-bordered"], border=0), unsafe_allow_html=True)
