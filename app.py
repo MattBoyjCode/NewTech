@@ -104,7 +104,7 @@ if st.button("Get Prices"):
         else:
             results_df = results_df.append({"Item Name": item_name, "Price": "Failed to connect to Steam Community Market"}, ignore_index=True)
 
-   custom_css = """
+       custom_css = """
     <style>
         table td:first-child {
             text-align: left;
