@@ -10,13 +10,58 @@ GAME_NAME = 'Counter-Strike: Global Offensive'
 
 # list of available weapon types
 weapon_types = [
-    "AK-47",
+       "AK-47",
     "M4A4",
+    "M4A1-S",
+    "Galil AR",
+    "FAMAS",
+    "AUG",
+    "SG 553",
     "AWP",
+    "G3SG1",
+    "SCAR-20",
+    "SSG 08",
+    "MAC-10",
+    "MP9",
+    "MP7",
+    "UMP-45",
+    "P90",
+    "PP-Bizon",
+    "Nova",
+    "XM1014",
+    "MAG-7",
+    "M249",
+    "Negev",
     "Glock-18",
     "USP-S",
     "P2000",
+    "P250",
+    "Dual Berettas",
+    "Five-SeveN",
+    "CZ75-Auto",
     "Desert Eagle",
+    "R8 Revolver",
+    "Tec-9",
+    "Bayonet",
+    "Flip Knife",
+    "Gut Knife",
+    "Karambit",
+    "M9 Bayonet",
+    "Huntsman Knife",
+    "Butterfly Knife",
+    "Falchion Knife",
+    "Shadow Daggers",
+    "Bowie Knife",
+    "Ursus Knife",
+    "Navaja Knife",
+    "Stiletto Knife",
+    "Talon Knife",
+    "Classic Knife",
+    "Paracord Knife",
+    "Survival Knife",
+    "Nomad Knife",
+    "Skeleton Knife",
+
     # add more weapon types here
 ]
 
@@ -51,4 +96,3 @@ if st.button("Get Prices"):
                 st.write(f'Failed to retrieve price for {item_name}')
         else:
             st.write('Failed to connect to Steam Community Market')
-
