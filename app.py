@@ -30,8 +30,11 @@ if st.button("Get Prices"):
         if response.status_code == 200:
             data = json.loads(response.text)
             if data['success']:
-                price = data['lowest_price']
-                st.write(f'{item_name}: {price}')
+                if 'lowest_price' in data:
+                    price = data['lowest_price']
+                    st.write(f'{item_name}: {price}')
+                else:
+                    st.write(f'No steam listings found for {item_name}')
             else:
                 st.write(f'Failed to retrieve price for {item_name}')
         else:
