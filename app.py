@@ -34,7 +34,7 @@ if st.button("Get Prices"):
                     price = data['lowest_price']
                     st.write(f'{item_name}: {price}')
                 else:
-                    st.write(f'No steam listings found for {item_name}')
+                    st.write(f'No Steam Listings Found for {item_name}')
             else:
                 st.write(f'Failed to retrieve price for {item_name}')
         else:
