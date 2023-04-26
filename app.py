@@ -104,5 +104,21 @@ if st.button("Get Prices"):
         else:
             results_df = results_df.append({"Item Name": item_name, "Price": "Failed to connect to Steam Community Market"}, ignore_index=True)
 
+   custom_css = """
+    <style>
+        table td:first-child {
+            text-align: left;
+        }
+        .stOrange {
+            color: orange;
+        }
+    </style>
+    """
+    st.markdown(custom_css, unsafe_allow_html=True)
+
+    # Replace "StatTrak" with a styled version
+    results_df["Item Name"] = results_df["Item Name"].apply(lambda x: x.replace("StatTrak", "<span class='stOrange'>StatTrak</span>"))
+
     # display the results as a table without the index column
     st.write(results_df.to_html(index=False, escape=False, classes=["table", "table-striped", "table-bordered"], border=0), unsafe_allow_html=True)
+    
