@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 import json
+import pandas as pd
 
 st.title('CS:GO Skin Price Checker')
 
@@ -8,9 +9,8 @@ st.title('CS:GO Skin Price Checker')
 APP_ID = '730'
 GAME_NAME = 'Counter-Strike: Global Offensive'
 
-# list of available weapon types
 weapon_types = [
-          "AK-47",
+       "AK-47",
     "M4A4",
     "M4A1-S",
     "Galil AR",
@@ -61,6 +61,8 @@ weapon_types = [
     "Survival Knife",
     "Nomad Knife",
     "Skeleton Knife",
+
+    # add more weapon types here
 ]
 
 # create a dropdown for weapon type and prompt user for item name
@@ -77,9 +79,8 @@ if st.button("Get Prices"):
         f'{weapon_type} | {item_name} (Factory New)'
     ]
 
-    # create a table to display the item names and their prices
-    st.write("Item Name", "|", "Price")
-    st.write("---", "|", "---")
+    # create an empty DataFrame for displaying the results
+    results_df = pd.DataFrame(columns=["Item Name", "Price"])
 
     # loop through item names and retrieve prices
     for item_name in item_names:
@@ -91,10 +92,14 @@ if st.button("Get Prices"):
             if data['success']:
                 if 'lowest_price' in data:
                     price = data['lowest_price']
-                    st.write(f'{item_name}', "|", f'{price}')
+                    results_df = results_df.append({"Item Name": item_name, "Price": price}, ignore_index=True)
                 else:
-                    st.write(f'No steam listings found for {item_name}')
+                    results_df = results_df.append({"Item Name": item_name, "Price": "No steam listings found"}, ignore_index=True)
             else:
-                st.write(f'Failed to retrieve price for {item_name}')
+                results_df = results_df.append({"Item Name": item_name, "Price": "Failed to retrieve price"}, ignore_index=True)
         else:
-            st.write('Failed to connect to Steam Community Market')
+            results_df = results_df.append({"Item Name": item_name, "Price": "Failed to connect to Steam Community Market"}, ignore_index=True)
+
+    # display the results as a table
+    st.table(results_df)
+
