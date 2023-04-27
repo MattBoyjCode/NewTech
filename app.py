@@ -71,16 +71,16 @@ item_name = st.text_input("Enter item name: ")
 if st.button("Get Prices"):
     # retrieve the current price of an item
     item_names = [
-        f'{weapon_type} | {item_name} (Battle-Scarred)',
-        f'{weapon_type} | {item_name} (Well-Worn)',
-        f'{weapon_type} | {item_name} (Field-Tested)',
-        f'{weapon_type} | {item_name} (Minimal Wear)',
-        f'{weapon_type} | {item_name} (Factory New)',
         f'StatTrak™ {weapon_type} | {item_name} (Battle-Scarred)',
         f'StatTrak™ {weapon_type} | {item_name} (Well-Worn)',
         f'StatTrak™ {weapon_type} | {item_name} (Field-Tested)',
         f'StatTrak™ {weapon_type} | {item_name} (Minimal Wear)',
         f'StatTrak™ {weapon_type} | {item_name} (Factory New)'
+        f'{weapon_type} | {item_name} (Battle-Scarred)',
+        f'{weapon_type} | {item_name} (Well-Worn)',
+        f'{weapon_type} | {item_name} (Field-Tested)',
+        f'{weapon_type} | {item_name} (Minimal Wear)',
+        f'{weapon_type} | {item_name} (Factory New)',
     ]
 
     # create an empty DataFrame for displaying the results
